@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="482121894_690458770220983_7689755978152813838_n.jpg" type="image/png" />
+  <title>โง่ไอสัส</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    #startBtn {
+      background-color: red;
+      color: white;
+      font-size: 2rem;
+      padding: 1rem 2rem;
+      border: none;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(255,0,0,0.6);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #startBtn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(255,0,0,1);
+    }
+
+    #video {
+      display: none;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <button id="startBtn">🚨 กดดิถ้ามึงแน่ 🚨</button>
+  
+  <video id="video" playsinline>
+    <source src="Untitled video - Made with Clipchamp.mp4" type="video/mp4">
+    วิดีโอของคุณไม่สามารถเล่นได้
+  </video>
+
+  <script>
+    const btn = document.getElementById("startBtn");
+    const video = document.getElementById("video");
+
+    btn.addEventListener("click", () => {
+      btn.style.display = "none";
+      video.style.display = "block";
+      video.volume = 1.0;
+      video.muted = false;
+      video.play();
+    });
+  </script>
+</body>
+</html>

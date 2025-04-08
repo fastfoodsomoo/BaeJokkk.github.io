@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" href="482121894_690458770220983_7689755978152813838_n.jpg" type="image/png" />
+  <title>BaeJokkk</title>
+  <style>
+    body {
+      background-color: #0f0f0f;
+      color: #00ffcc;
+      font-family: 'Courier New', monospace;
+      padding: 2rem;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      text-shadow: 0 0 10px #00ffcc;
+    }
+    .console {
+      background-color: black;
+      padding: 1rem;
+      border: 2px solid #00ffcc;
+      height: 300px;
+      overflow: auto;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    button {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #00ffcc;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #00ffaa;
+    }
+  </style>
+</head>
+<body>
+  <h1>BaeJok V2</h1>
+  <p style="text-align: center;">โปรคุณภาพกังๆ • Wallhack • Aimbot • Triggerbot</p>
+
+  <div class="console" id="console"></div>
+
+  <div style="text-align: center;">
+    <button onclick="triggerFakeDownload()">Press to see more</button>
+  </div>
+
+  <script>
+    const consoleEl = document.getElementById("console");
+
+    const randomMessages = [
+      "Injecting module: wallhack.dll",
+      "Fetching memory offset: 0x0FF045AC",
+      "Bypassing anti-cheat system...",
+      "Loading textures...",
+      "Establishing encrypted tunnel...",
+      "Analyzing hitboxes...",
+      "Spoofing hardware ID...",
+      "Compiling aimbot logic...",
+      "Decrypting target file...",
+      "Accessing GPU driver layer...",
+      "Reading server data stream...",
+      "Cracking protection protocol...",
+      "Initializing neural aimbot...",
+      "Writing memory address...",
+      "Executing ghost routine...",
+      "Uploading cheat core...",
+      "Bypassing kernel-level protection...",
+      "Accessing target process...",
+      "Scanning active processes...",
+      "Downloading cheat definitions...",
+      "Overclocking CPU cores...",
+      "Disabling firewall...",
+      "Hijacking game thread...",
+      "Modifying player velocity...",
+      "Spoofing MAC address...",
+      "Patching memory leak...",
+      "Analyzing network packets...",
+      "Injecting aim routines...",
+      "Faking leaderboard position...",
+      "Encrypting cheat payload...",
+      "Redirecting DNS queries...",
+      "Scrambling RAM data...",
+      "Forcing vertical sync bypass...",
+      "Streaming GPU temp logs...",
+      "Uploading telemetry data...",
+      "Activating auto-headshot mode...",
+      "Tunneling into match servers...",
+      "Manipulating hit registration...",
+      "Mutating recoil patterns...",
+      "Tracking enemy footsteps...",
+      "Linking to cheat marketplace...",
+      "Installing silent aimbot...",
+      "Neutralizing watchdog.exe...",
+      "Creating fake cheat signature...",
+      "Locking target bones...",
+      "Simulating input lag...",
+      "Decompiling anti-cheat binary...",
+      "Rendering x-ray walls...",
+      "Generating spoof certificate...",
+      "Running heatmap analysis...",
+      "Compiling packet flood script...",
+      "Encrypting config file...",
+      "Sending fake system pings...",
+      "Scanning ports...",
+      "Downloading packet injector...",
+      "Emulating GPU burst mode...",
+      "Syncing cheat with server...",
+      "Enabling rapid fire...",
+      "Boosting tickrate bypass...",
+      "Activating ghost mode...",
+      "Validating cheat checksum...",
+      "Finalizing hack engine...",
+    ];
+
+    let logCount = 0;
+    const maxLogs = 60;
+
+    function getRandomLogLine() {
+      const randomIndex = Math.floor(Math.random() * randomMessages.length);
+      const timestamp = new Date().toLocaleTimeString();
+      return `[${timestamp}] ${randomMessages[randomIndex]}`;
+    }
+
+    function addLogLine() {
+      const line = document.createElement("div");
+      if (logCount < maxLogs) {
+        line.textContent = getRandomLogLine();
+        logCount++;
+        consoleEl.appendChild(line);
+        consoleEl.scrollTop = consoleEl.scrollHeight;
+        const delay = Math.random() * 300 + 200;
+        setTimeout(addLogLine, delay);
+      } else {
+        line.textContent = `[${new Date().toLocaleTimeString()}] Hack loaded successfully ✅`;
+        line.style.color = "#00ff00";
+        consoleEl.appendChild(line);
+        consoleEl.scrollTop = consoleEl.scrollHeight;
+      }
+    }
+
+    function triggerFakeDownload() {
+      // เปลี่ยน URL ตามต้องการ
+      window.location.href = "index2.html";
+    }
+
+    // เริ่มรันทันทีเมื่อโหลดหน้าเว็บ
+    window.onload = () => {
+      addLogLine();
+    };
+  </script>
+</body>
+</html>
