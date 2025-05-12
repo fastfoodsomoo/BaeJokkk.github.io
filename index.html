@@ -4,30 +4,66 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="482121894_690458770220983_7689755978152813838_n.jpg" type="image/png" />
-  <title>BaeJokkk</title>
+  <title>BaeJok V/127 | BY Yoko</title>
   <style>
-    body {
-      background-color: #0f0f0f;
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
       color: #00ffcc;
       font-family: 'Courier New', monospace;
-      padding: 2rem;
+      overflow: hidden;
     }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+
+    .overlay {
+      padding: 2rem;
+      height: 100%;
+      box-sizing: border-box;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
     h1 {
       text-align: center;
+      text-shadow: 0 0 20px #00ffcc;
       font-size: 2rem;
-      text-shadow: 0 0 10px #00ffcc;
     }
-    .console {
-      background-color: black;
+
+    #console {
+      background: black;
+      border: 1px solid #00ffcc;
       padding: 1rem;
-      border: 2px solid #00ffcc;
-      height: 300px;
-      overflow: auto;
-      margin-top: 2rem;
+      height: 60vh;
+      width: 100%;
+      max-width: 700px;
+      overflow-y: auto;
       font-size: 0.9rem;
+      box-shadow: 0 0 15px #00ffcc40;
+      margin: 2rem 0;
     }
+
+    .glitch {
+      animation: glitch 1s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+      50% { text-shadow: -2px 2px #00ffff, 2px -2px #ff00ff; }
+      100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+    }
+
     button {
-      margin-top: 2rem;
       padding: 1rem 2rem;
       font-size: 1.2rem;
       background-color: #00ffcc;
@@ -35,125 +71,127 @@
       border: none;
       cursor: pointer;
       transition: all 0.3s ease;
+      box-shadow: 0 0 15px #00ffcc80;
     }
+
     button:hover {
       background-color: #00ffaa;
+    }
+
+    #audioControl {
+      margin-top: 1rem;
+      color: #00ffcc;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    #credits {
+      text-align: center;
+      font-size: 0.75rem;
+      margin-top: 1rem;
+      opacity: 0.6;
     }
   </style>
 </head>
 <body>
-  <h1>BaeJok V2</h1>
-  <p style="text-align: center;">โปรคุณภาพกังๆ • Wallhack • Aimbot • Triggerbot</p>
-
-  <div class="console" id="console"></div>
-
-  <div style="text-align: center;">
-    <button onclick="triggerFakeDownload()">Press to see more</button>
+  <canvas id="matrix"></canvas>
+  <div class="overlay">
+    <h1 class="glitch">BAEJOK VALORANT HACK V/127</h1>
+    <p style="margin-top: -1rem; color: #00ffaa; font-size: 1rem; text-align: center;">
+        โปร Valorant คุณภาพกัง จากยิงหัวกลายเป็นยิงตีน โดย สแวกบี
+    <div id="console"></div>
+    <button onclick="window.location.href='index2.html'">BUY HERE</button>
+    <div id="audioControl">🔊 Ambience: ON</div>
+    <div id="credits">Make UIInterface by Yoko</div>
   </div>
 
-  <script>
-    const consoleEl = document.getElementById("console");
+  <audio id="bgAudio" src="hacker-ambience.mp3" loop autoplay></audio>
 
-    const randomMessages = [
-      "Injecting module: wallhack.dll",
-      "Fetching memory offset: 0x0FF045AC",
-      "Bypassing anti-cheat system...",
-      "Loading textures...",
+  <script>
+    // Matrix background
+    const canvas = document.getElementById('matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    const letters = '01';
+    const fontSize = 14;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00ffcc';
+      ctx.font = fontSize + 'px monospace';
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+        if (drops[i] * fontSize > canvas.height || Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    setInterval(drawMatrix, 50);
+
+    // Fake console log messages
+    const consoleEl = document.getElementById("console");
+    const messages = [
+      "Injecting wallhack.dll...",
+      "Fetching memory offset...",
+      "Bypassing anti-cheat...",
       "Establishing encrypted tunnel...",
       "Analyzing hitboxes...",
+      "Compiling aimbot core...",
       "Spoofing hardware ID...",
-      "Compiling aimbot logic...",
-      "Decrypting target file...",
-      "Accessing GPU driver layer...",
-      "Reading server data stream...",
-      "Cracking protection protocol...",
-      "Initializing neural aimbot...",
-      "Writing memory address...",
-      "Executing ghost routine...",
-      "Uploading cheat core...",
-      "Bypassing kernel-level protection...",
-      "Accessing target process...",
-      "Scanning active processes...",
-      "Downloading cheat definitions...",
-      "Overclocking CPU cores...",
-      "Disabling firewall...",
-      "Hijacking game thread...",
-      "Modifying player velocity...",
-      "Spoofing MAC address...",
-      "Patching memory leak...",
-      "Analyzing network packets...",
-      "Injecting aim routines...",
-      "Faking leaderboard position...",
-      "Encrypting cheat payload...",
-      "Redirecting DNS queries...",
-      "Scrambling RAM data...",
-      "Forcing vertical sync bypass...",
-      "Streaming GPU temp logs...",
-      "Uploading telemetry data...",
-      "Activating auto-headshot mode...",
-      "Tunneling into match servers...",
-      "Manipulating hit registration...",
-      "Mutating recoil patterns...",
-      "Tracking enemy footsteps...",
-      "Linking to cheat marketplace...",
-      "Installing silent aimbot...",
-      "Neutralizing watchdog.exe...",
-      "Creating fake cheat signature...",
-      "Locking target bones...",
-      "Simulating input lag...",
-      "Decompiling anti-cheat binary...",
-      "Rendering x-ray walls...",
-      "Generating spoof certificate...",
-      "Running heatmap analysis...",
-      "Compiling packet flood script...",
-      "Encrypting config file...",
-      "Sending fake system pings...",
-      "Scanning ports...",
-      "Downloading packet injector...",
-      "Emulating GPU burst mode...",
-      "Syncing cheat with server...",
-      "Enabling rapid fire...",
-      "Boosting tickrate bypass...",
+      "Uploading cheat payload...",
       "Activating ghost mode...",
-      "Validating cheat checksum...",
-      "Finalizing hack engine...",
+      "✔️ Hack engine initialized."
     ];
 
     let logCount = 0;
-    const maxLogs = 60;
+    const maxLogs = 40;
 
-    function getRandomLogLine() {
-      const randomIndex = Math.floor(Math.random() * randomMessages.length);
+    function getRandomLog() {
+      const msg = messages[Math.floor(Math.random() * messages.length)];
       const timestamp = new Date().toLocaleTimeString();
-      return `[${timestamp}] ${randomMessages[randomIndex]}`;
+      return `[${timestamp}] ${msg}`;
     }
 
-    function addLogLine() {
-      const line = document.createElement("div");
+    function logLoop() {
       if (logCount < maxLogs) {
-        line.textContent = getRandomLogLine();
-        logCount++;
+        const line = document.createElement("div");
+        line.textContent = getRandomLog();
         consoleEl.appendChild(line);
         consoleEl.scrollTop = consoleEl.scrollHeight;
-        const delay = Math.random() * 300 + 200;
-        setTimeout(addLogLine, delay);
+        logCount++;
+        setTimeout(logLoop, Math.random() * 200 + 100);
       } else {
-        line.textContent = `[${new Date().toLocaleTimeString()}] Hack loaded successfully ✅`;
-        line.style.color = "#00ff00";
-        consoleEl.appendChild(line);
+        const done = document.createElement("div");
+        done.textContent = `[${new Date().toLocaleTimeString()}] System ready ✅`;
+        done.style.color = "#00ff00";
+        consoleEl.appendChild(done);
         consoleEl.scrollTop = consoleEl.scrollHeight;
       }
     }
 
-    function triggerFakeDownload() {
-      // เปลี่ยน URL ตามต้องการ
-      window.location.href = "index2.html";
-    }
+    window.onload = logLoop;
 
-    // เริ่มรันทันทีเมื่อโหลดหน้าเว็บ
-    window.onload = () => {
-      addLogLine();
-    };
+    // Audio control
+    const bgAudio = document.getElementById("bgAudio");
+    const audioControl = document.getElementById("audioControl");
+    let audioOn = true;
+    audioControl.addEventListener("click", () => {
+      audioOn = !audioOn;
+      bgAudio.muted = !audioOn;
+      audioControl.textContent = audioOn ? "🔊 Ambience: ON" : "🔇 Ambience: OFF";
+    });
+
+    // Resize canvas
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
   </script>
 </body>
 </html>
